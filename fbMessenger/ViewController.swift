@@ -8,17 +8,71 @@
 
 import UIKit
 
+class Friend : NSObject {
+    
+    var name : String?
+    var profileImageName : UIImage?
+}
+
+class Message : NSObject {
+    
+    var text : String?
+    var date : NSDate?
+    
+    var friendWhoSentMessage : Friend?
+    
+}
+
 class FriendsController: UICollectionViewController {
 
     private final let cellID : String = "cellID"
     
+    var messages : [Message]?
+    
+    func setupData() {
+        //Person one
+        let harambe = Friend()
+        harambe.name = "Harambe"
+        harambe.profileImageName = #imageLiteral(resourceName: "newHarambe")
+        
+        let messageOne = Message()
+        messageOne.friendWhoSentMessage = harambe
+        messageOne.text = "Hello. My name is Harambe. Nice to meet you man!"
+        messageOne.date = NSDate()
+         //Person Two
+        
+        let rasmus : Friend = Friend()
+        rasmus.name = "Rasmus Agerup"
+        rasmus.profileImageName = #imageLiteral(resourceName: "rasmusAgerup")
+        
+        let messageTwo : Message = Message()
+        messageTwo.friendWhoSentMessage = rasmus
+        messageTwo.text = "Hei Manveer! Rasmus her :)"
+        messageTwo.date = NSDate()
+        
+        let david : Friend = Friend()
+        david.name = "David Krogh"
+        david.profileImageName = #imageLiteral(resourceName: "davidKrogh")
+        
+        let messageThree : Message = Message()
+        messageThree.friendWhoSentMessage = david
+        messageThree.text = "Heihei! Tilbake fra salgsmøte nå!"
+        messageThree.date = NSDate()
+        //Add all the messages to the messages array
+        messages = [messageOne, messageTwo, messageThree]
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupData() //Gets data from method above
+        
         // Do any additional setup after loading the view, typically from a nib.
         navigationItem.title="Recent"
         
         collectionView.backgroundColor = UIColor.white
-        collectionView.register(FriendCell.self, forCellWithReuseIdentifier: cellID)
+        collectionView.register(MessageCell.self, forCellWithReuseIdentifier: cellID)
         
         // When you drag the screen up, it bounces back
         collectionView.alwaysBounceVertical = true
@@ -34,11 +88,20 @@ class FriendsController: UICollectionViewController {
 extension FriendsController : UICollectionViewDelegateFlowLayout{
     //Methods from UICollectionViewController
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        if let count = messages?.count{
+            return count
+        }
+        return 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! MessageCell
+        if let message = messages?[indexPath.item]{
+            cell.message = message
+        }
+  
+        
+        return cell
     }
     
     //Methods from UICollectionViewDelegateFlowLayout. Used to describe each elements size according to the window its in
@@ -49,7 +112,25 @@ extension FriendsController : UICollectionViewDelegateFlowLayout{
     
 }
 
-class FriendCell : BaseCell{
+class MessageCell : BaseCell{
+    
+    var message : Message?{
+        didSet{
+            nameLabel.text = message?.friendWhoSentMessage?.name
+            if let profileImageName = message?.friendWhoSentMessage?.profileImageName{
+                 profileImageView.image = profileImageName
+            }
+            if let date = message?.date {
+                let dateformatter = DateFormatter()
+                dateformatter.dateFormat = "h:mm a"
+                timeLabel.text = dateformatter.string(from: date as Date)
+            }
+            
+           messageLabel.text = message?.text
+            
+            
+        }
+    }
     
     let profileImageView : UIImageView = {
         let imageview : UIImageView = UIImageView()
@@ -65,7 +146,7 @@ class FriendCell : BaseCell{
         return view
     }()
     
-    let nameLabel : UILabel = {
+    var nameLabel : UILabel = {
         let label : UILabel = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.text = "Friend Name"
@@ -77,7 +158,7 @@ class FriendCell : BaseCell{
         messageLabel.font = UIFont.systemFont(ofSize: 14)
         messageLabel.text = "Friends Message and something fadeeeeeee"
      
-        messageLabel.backgroundColor = UIColor.darkGray
+        messageLabel.backgroundColor = UIColor.white
         return messageLabel
     }()
     
@@ -123,7 +204,7 @@ class FriendCell : BaseCell{
     
     private func setupContainerView(){
         let containerView = UIView()
-        containerView.backgroundColor = UIColor.blue
+        
        
         addSubview(containerView)
         
