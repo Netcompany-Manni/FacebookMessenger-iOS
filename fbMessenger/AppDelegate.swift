@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
+        window = UIWindow(frame: UIScreen.main.bounds) //UIScreen is the class to access hardware information
+        window?.makeKeyAndVisible() //Display Window
         
         
         let layout = UICollectionViewFlowLayout()
