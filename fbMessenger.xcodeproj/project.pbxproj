@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		EC36F7FC21CB886D009F9994 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC36F7FB21CB886D009F9994 /* AppDelegate.swift */; };
 		EC36F7FE21CB886D009F9994 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC36F7FD21CB886D009F9994 /* ViewController.swift */; };
-		EC36F80121CB886D009F9994 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC36F7FF21CB886D009F9994 /* Main.storyboard */; };
 		EC36F80421CB886D009F9994 /* fbMessenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC36F80221CB886D009F9994 /* fbMessenger.xcdatamodeld */; };
 		EC36F80621CB886D009F9994 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC36F80521CB886D009F9994 /* Assets.xcassets */; };
 		EC36F80921CB886D009F9994 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC36F80721CB886D009F9994 /* LaunchScreen.storyboard */; };
@@ -19,7 +18,6 @@
 		EC36F7F821CB886D009F9994 /* fbMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fbMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC36F7FB21CB886D009F9994 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC36F7FD21CB886D009F9994 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EC36F80021CB886D009F9994 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EC36F80321CB886D009F9994 /* fbMessenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = fbMessenger.xcdatamodel; sourceTree = "<group>"; };
 		EC36F80521CB886D009F9994 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC36F80821CB886D009F9994 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,7 +56,6 @@
 			children = (
 				EC36F7FB21CB886D009F9994 /* AppDelegate.swift */,
 				EC36F7FD21CB886D009F9994 /* ViewController.swift */,
-				EC36F7FF21CB886D009F9994 /* Main.storyboard */,
 				EC36F80521CB886D009F9994 /* Assets.xcassets */,
 				EC36F80721CB886D009F9994 /* LaunchScreen.storyboard */,
 				EC36F80A21CB886D009F9994 /* Info.plist */,
@@ -127,7 +124,6 @@
 			files = (
 				EC36F80921CB886D009F9994 /* LaunchScreen.storyboard in Resources */,
 				EC36F80621CB886D009F9994 /* Assets.xcassets in Resources */,
-				EC36F80121CB886D009F9994 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,14 +143,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EC36F7FF21CB886D009F9994 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EC36F80021CB886D009F9994 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EC36F80721CB886D009F9994 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
