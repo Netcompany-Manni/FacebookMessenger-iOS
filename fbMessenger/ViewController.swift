@@ -90,6 +90,13 @@ class FriendCell : BaseCell{
         return timeLabel
     }()
     
+    let hasReadImageView : UIImageView = {
+        let imageView : UIImageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 10
+        imageView.layer.masksToBounds = true
+        return imageView
+    }()
     override func setupViews() {
         backgroundColor = UIColor.gray
         
@@ -101,6 +108,7 @@ class FriendCell : BaseCell{
         dividerLineView.translatesAutoresizingMaskIntoConstraints = false
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         profileImageView.image = #imageLiteral(resourceName: "newHarambe")
+        hasReadImageView.image = #imageLiteral(resourceName: "newHarambe")
         
         //Constraints for the image in the cell
         addConstraintsWithFormat(format: "H:|-12-[v0(68)]", views: profileImageView)
@@ -127,11 +135,17 @@ class FriendCell : BaseCell{
         containerView.addSubview(nameLabel)
         containerView.addSubview(messageLabel)
         containerView.addSubview(timeLabel)
+        containerView.addSubview(hasReadImageView)
+        
         containerView.addConstraintsWithFormat(format: "H:|[v0][v1(80)]-12-|", views: nameLabel, timeLabel) //NameLabel and timeLabel
         
-        containerView.addConstraintsWithFormat(format: "H:|[v0]-12-|", views: messageLabel) //MsgLabel
-        containerView.addConstraintsWithFormat(format: "V:|[v0][v1(24)]|", views: nameLabel, messageLabel)
-        containerView.addConstraintsWithFormat(format: "V:|[v0(20)]", views: timeLabel)
+         containerView.addConstraintsWithFormat(format: "V:|[v0][v1(24)]|", views: nameLabel, messageLabel)
+        
+        containerView.addConstraintsWithFormat(format: "H:|[v0]-8-[v1(20)]-12-|", views: messageLabel, hasReadImageView) //MsgLabel
+        
+       
+        containerView.addConstraintsWithFormat(format: "V:|[v0(24)]", views: timeLabel)
+        containerView.addConstraintsWithFormat(format: "V:[v0(20)]|", views: hasReadImageView)
     }
 }
 
